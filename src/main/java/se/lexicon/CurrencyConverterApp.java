@@ -12,6 +12,7 @@ public class CurrencyConverterApp {
             String input = ConsoleUI.getMenuChoice();
             continueApp = performOperators(input);
 
+            // Gives the user a chance to read the results before the menu shows up again.
             System.out.println("Press \"ENTER\" to continue...");
             Scanner scanner = new Scanner(System.in);
             scanner.nextLine();
@@ -66,7 +67,6 @@ public class CurrencyConverterApp {
         return continueApp;
     }
 
-    //todo: refactor
     public static double getAmountFromUser(String convertFrom, String convertTo, double rate){
         double amount = 0.0;
         boolean continueAskForAmount = true;
