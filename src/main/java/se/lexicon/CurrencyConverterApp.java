@@ -1,6 +1,7 @@
 package se.lexicon;
 
-public class Main {
+public class CurrencyConverterApp {
+
     public static void main(String[] args) {
         boolean continueApp = true;
         while (continueApp){
