@@ -7,50 +7,37 @@ public class Main {
             UserHandling.displayCurrencySelectionMenu();
             String input = UserHandling.inputFromUser();
 
-            String amountStr = "";
-            double amount = 0.0;
             double convertedAmount = 0.0;
+            double amount = 0.0;
 
             switch (input){
                 case "1":
-                    UserHandling.displayCurrencyConvertMenu("SEK", "USD", CurrencyConversion.sekToUSDRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("SEK", "USD", CurrencyConversion.sekToUSDRate);
                     convertedAmount = CurrencyConversion.convertSEKToUSD(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 1);
                     break;
                 case "2":
-                    UserHandling.displayCurrencyConvertMenu("USD", "SEK", CurrencyConversion.usdToSEKRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("USD", "SEK", CurrencyConversion.usdToSEKRate);
                     convertedAmount = CurrencyConversion.convertUSDToSEK(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 2);
                     break;
                 case "3":
-                    UserHandling.displayCurrencyConvertMenu("SEK", "Euro", CurrencyConversion.sekToEuroRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("SEK", "Euro", CurrencyConversion.sekToEuroRate);
                     convertedAmount = CurrencyConversion.convertSEKToEuro(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 3);
                     break;
                 case "4":
-                    UserHandling.displayCurrencyConvertMenu("Euro", "SEK", CurrencyConversion.euroToSEKRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("Euro", "SEK", CurrencyConversion.euroToSEKRate);
                     convertedAmount = CurrencyConversion.convertEuroToSEK(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 4);
                     break;
                 case "5":
-                    UserHandling.displayCurrencyConvertMenu("USD", "Euro", CurrencyConversion.usdToEuroRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("USD", "Euro", CurrencyConversion.usdToEuroRate);
                     convertedAmount = CurrencyConversion.convertUSDToEuro(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 5);
                     break;
                 case "6":
-                    UserHandling.displayCurrencyConvertMenu("Euro", "USD", CurrencyConversion.euroToUSDRate);
-                    amountStr = UserHandling.inputFromUser();
-                    amount = Double.parseDouble(amountStr);
+                    amount = takeAmountFromUser("Euro", "USD", CurrencyConversion.euroToUSDRate);
                     convertedAmount = CurrencyConversion.convertEuroToUSD(amount);
                     UserHandling.displayConversion(amount, convertedAmount, 6);
                     break;
@@ -59,12 +46,31 @@ public class Main {
                     continueApp = false;
                     continue;
                 default:
-                    System.out.println("No valid menu choice made!");
+                    System.out.println("Error: No valid menu choice made!");
                     break;
             }
             System.out.println("--------------------");
         }
     }
 
-
+    public static double takeAmountFromUser(String convertFrom, String convertTo, double rate){
+        double amount = 0.0;
+        boolean continueAskForAmount = true;
+        while (continueAskForAmount){
+            UserHandling.displayCurrencyConvertMenu(convertFrom, convertTo, rate);
+            String amountStr = UserHandling.inputFromUser();
+            try{
+                amount = Double.parseDouble(amountStr);
+                if (amount <= 0) {
+                    System.out.println("Error: Only positive numbers allowed!\n");
+                    continue;
+                }
+                continueAskForAmount = false;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Error: Only numbers valid as input!\n");
+            }
+        }
+        return amount;
+    }
 }
