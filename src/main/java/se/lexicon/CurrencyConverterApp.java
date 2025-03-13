@@ -13,32 +13,32 @@ public class CurrencyConverterApp {
 
             switch (input){
                 case "1":
-                    amount = takeAmountFromUser("SEK", "USD", CurrencyConversion.sekToUSDRate);
+                    amount = takeAmountFromUser("SEK", "USD", ConversionRates.SEK_TO_USD_RATE);
                     convertedAmount = CurrencyConversion.convertSEKToUSD(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 1);
                     break;
                 case "2":
-                    amount = takeAmountFromUser("USD", "SEK", CurrencyConversion.usdToSEKRate);
+                    amount = takeAmountFromUser("USD", "SEK", ConversionRates.USD_TO_SEK_RATE);
                     convertedAmount = CurrencyConversion.convertUSDToSEK(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 2);
                     break;
                 case "3":
-                    amount = takeAmountFromUser("SEK", "Euro", CurrencyConversion.sekToEuroRate);
+                    amount = takeAmountFromUser("SEK", "Euro", ConversionRates.SEK_TO_EURO_RATE);
                     convertedAmount = CurrencyConversion.convertSEKToEuro(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 3);
                     break;
                 case "4":
-                    amount = takeAmountFromUser("Euro", "SEK", CurrencyConversion.euroToSEKRate);
+                    amount = takeAmountFromUser("Euro", "SEK", ConversionRates.EURO_TO_SEK_RATE);
                     convertedAmount = CurrencyConversion.convertEuroToSEK(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 4);
                     break;
                 case "5":
-                    amount = takeAmountFromUser("USD", "Euro", CurrencyConversion.usdToEuroRate);
+                    amount = takeAmountFromUser("USD", "Euro", ConversionRates.USD_TO_EURO_RATE);
                     convertedAmount = CurrencyConversion.convertUSDToEuro(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 5);
                     break;
                 case "6":
-                    amount = takeAmountFromUser("Euro", "USD", CurrencyConversion.euroToUSDRate);
+                    amount = takeAmountFromUser("Euro", "USD", ConversionRates.EURO_TO_USD_RATE);
                     convertedAmount = CurrencyConversion.convertEuroToUSD(amount);
                     ConsoleUI.displayConversion(amount, convertedAmount, 6);
                     break;
