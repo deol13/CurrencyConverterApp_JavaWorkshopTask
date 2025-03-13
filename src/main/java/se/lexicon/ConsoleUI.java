@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Display menu.
  * Handle input from user.
  * */
-public class UserHandling {
+public class ConsoleUI {
 
     public static void displayCurrencySelectionMenu() {
         System.out.println("Currency Converter App:");
@@ -66,7 +66,7 @@ public class UserHandling {
 
     private static String dateAndTime(){
         LocalDateTime dateAndTime = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("eeee dd MMM yyyy : HH:mm"); //Test around!
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("eeee dd MMM yyyy : HH:mm");
         return dateAndTime.format(format);
     }
 

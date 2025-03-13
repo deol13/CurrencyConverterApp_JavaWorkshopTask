@@ -5,8 +5,8 @@ public class CurrencyConverterApp {
     public static void main(String[] args) {
         boolean continueApp = true;
         while (continueApp){
-            UserHandling.displayCurrencySelectionMenu();
-            String input = UserHandling.inputFromUser();
+            ConsoleUI.displayCurrencySelectionMenu();
+            String input = ConsoleUI.inputFromUser();
 
             double convertedAmount = 0.0;
             double amount = 0.0;
@@ -15,32 +15,32 @@ public class CurrencyConverterApp {
                 case "1":
                     amount = takeAmountFromUser("SEK", "USD", CurrencyConversion.sekToUSDRate);
                     convertedAmount = CurrencyConversion.convertSEKToUSD(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 1);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 1);
                     break;
                 case "2":
                     amount = takeAmountFromUser("USD", "SEK", CurrencyConversion.usdToSEKRate);
                     convertedAmount = CurrencyConversion.convertUSDToSEK(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 2);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 2);
                     break;
                 case "3":
                     amount = takeAmountFromUser("SEK", "Euro", CurrencyConversion.sekToEuroRate);
                     convertedAmount = CurrencyConversion.convertSEKToEuro(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 3);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 3);
                     break;
                 case "4":
                     amount = takeAmountFromUser("Euro", "SEK", CurrencyConversion.euroToSEKRate);
                     convertedAmount = CurrencyConversion.convertEuroToSEK(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 4);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 4);
                     break;
                 case "5":
                     amount = takeAmountFromUser("USD", "Euro", CurrencyConversion.usdToEuroRate);
                     convertedAmount = CurrencyConversion.convertUSDToEuro(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 5);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 5);
                     break;
                 case "6":
                     amount = takeAmountFromUser("Euro", "USD", CurrencyConversion.euroToUSDRate);
                     convertedAmount = CurrencyConversion.convertEuroToUSD(amount);
-                    UserHandling.displayConversion(amount, convertedAmount, 6);
+                    ConsoleUI.displayConversion(amount, convertedAmount, 6);
                     break;
                 case "0":
                     System.out.println("Exiting currency converter app.");
@@ -58,8 +58,8 @@ public class CurrencyConverterApp {
         double amount = 0.0;
         boolean continueAskForAmount = true;
         while (continueAskForAmount){
-            UserHandling.displayCurrencyConvertMenu(convertFrom, convertTo, rate);
-            String amountStr = UserHandling.inputFromUser();
+            ConsoleUI.displayCurrencyConvertMenu(convertFrom, convertTo, rate);
+            String amountStr = ConsoleUI.inputFromUser();
             try{
                 amount = Double.parseDouble(amountStr);
                 if (amount <= 0) {
